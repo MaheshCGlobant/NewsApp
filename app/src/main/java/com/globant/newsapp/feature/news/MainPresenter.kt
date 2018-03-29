@@ -12,23 +12,23 @@ import javax.inject.Inject
  * Created by mahesh.chakkarwar on 23/03/18.
  */
 
-class MainPresenter @Inject constructor(): MainContract.MainPresenter {
+class MainPresenter @Inject constructor() : MainContract.MainPresenter {
 
     @Inject
-   lateinit var mainView:MainContract.MainView
+    lateinit var mainView: MainContract.MainView
 
     @Inject
     lateinit var newsRepo: NewsRepo
 
 
     override fun getNewsList(country: String, category: String) {
-            newsRepo.getNews(country, category).subscribe(Consumer {
-                if(it.status.equals("ok")){
-                    mainView.updateNews(it.articles, it.totalResults)
-                }
-            }, Consumer {
-                it.stackTrace
-            })
+        newsRepo.getNews(country, category).subscribe(Consumer {
+            if (it.status.equals("ok")) {
+                mainView.updateNews(it.articles, it.totalResults)
+            }
+        }, Consumer {
+            mainView.error("Loading Error!!!")
+        })
 
     }
 

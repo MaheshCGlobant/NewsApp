@@ -11,6 +11,7 @@ interface MainContract {
     interface MainView {
        fun setName(name:String)
        fun updateNews(list: List<Article>?, totalCount:Int)
+       fun error(msg:String)
     }
 
     interface MainPresenter {
