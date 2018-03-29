@@ -5,10 +5,12 @@ import com.globant.newsapp.MyApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import javax.inject.Singleton
 
 /**
  * Created by mahesh.chakkarwar on 23/03/18.
  */
+@Singleton
 @Component(modules = [
     AndroidInjectionModule::class,
     AppModule::class,

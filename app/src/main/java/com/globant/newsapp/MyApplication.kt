@@ -7,6 +7,7 @@ import com.globant.newsapp.di.DaggerAppComponent
 
 import dagger.android.HasActivityInjector
 import dagger.android.DispatchingAndroidInjector
+import retrofit2.Retrofit
 import javax.inject.Inject
 
 

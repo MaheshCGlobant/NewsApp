@@ -1,7 +1,6 @@
-package com.globant.newsapp.di.component
+package com.globant.newsapp.di
 
-import com.globant.newsapp.MainActivity
-import com.globant.newsapp.di.module.MainActivityModule
+import com.globant.newsapp.feature.news.MainActivity
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
 

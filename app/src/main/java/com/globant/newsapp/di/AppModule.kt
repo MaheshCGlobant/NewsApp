@@ -2,10 +2,13 @@ package com.globant.newsapp.di
 
 import android.app.Application
 import android.content.Context
-import com.globant.newsapp.di.component.MainActivityComponent
+import com.globant.newsapp.feature.NewsRepo
 import dagger.Module
 import javax.inject.Singleton
 import dagger.Provides
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 /**
@@ -14,9 +17,29 @@ import dagger.Provides
 @Module(subcomponents = [MainActivityComponent::class])
 class AppModule {
 
+    companion object {
+        val BASE_URL: String = "https://newsapi.org/"
+//        val API_KEY: String = "79b785d859ef44d895de8c7228e92622"
+    }
+
     @Provides
     @Singleton
     fun provideContext(application: Application): Context {
         return application
     }
+
+    @Provides
+    @Singleton
+    fun provideRetrofit():Retrofit{
+        return Retrofit.Builder()
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(BASE_URL)
+                .build()
+    }
+
+    @Provides
+    @Singleton
+    fun providesNewsRepo(retrofit: Retrofit): NewsRepo = NewsRepo(retrofit)
 }
+

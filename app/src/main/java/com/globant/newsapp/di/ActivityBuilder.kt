@@ -1,8 +1,7 @@
 package com.globant.newsapp.di
 
 import android.app.Activity
-import com.globant.newsapp.MainActivity
-import com.globant.newsapp.di.component.MainActivityComponent
+import com.globant.newsapp.feature.news.MainActivity
 import dagger.Binds
 import dagger.Module
 import dagger.android.ActivityKey
