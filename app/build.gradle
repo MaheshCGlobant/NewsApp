@@ -51,4 +51,7 @@ dependencies {
 
     // rxandroid
     compile "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
+    //picasso
+    compile "com.squareup.picasso:picasso:$picasso_version"
 }

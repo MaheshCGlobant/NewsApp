@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.globant.newsapp.Article
 import com.globant.newsapp.R
 import com.globant.newsapp.feature.news.adapter.NewsHeadlinesAdapter
+import com.squareup.picasso.Picasso
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -16,6 +17,9 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
     @Inject
     lateinit var presenter: MainPresenter
 
+    @Inject
+    lateinit var picasso: Picasso
+
     lateinit var newsAdapter:NewsHeadlinesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +27,7 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        newsAdapter=NewsHeadlinesAdapter(this,ArrayList<Article>())
+        newsAdapter=NewsHeadlinesAdapter(this, picasso, ArrayList<Article>())
         recyclerViewNewsList?.adapter = newsAdapter
 
         presenter.getNewsList("us", "business")

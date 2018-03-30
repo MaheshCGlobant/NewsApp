@@ -3,9 +3,12 @@ package com.globant.newsapp.di
 import android.app.Application
 import android.content.Context
 import com.globant.newsapp.feature.NewsRepo
+import com.squareup.picasso.OkHttpDownloader
+import com.squareup.picasso.Picasso
 import dagger.Module
 import javax.inject.Singleton
 import dagger.Provides
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,6 +38,13 @@ class AppModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
+                .build()
+    }
+
+    @Provides
+    @Singleton
+    internal fun providePicasso(context: Context): Picasso {
+        return Picasso.Builder(context)
                 .build()
     }
 
