@@ -45,4 +45,6 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
     override fun error(msg: String) {
         Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
     }
+
+    //Mahesh
 }

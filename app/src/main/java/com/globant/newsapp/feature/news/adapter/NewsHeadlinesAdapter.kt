@@ -42,6 +42,7 @@ class NewsHeadlinesAdapter(val context: Context, picasso: Picasso, newsList: Arr
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             var imageView = itemView.findViewById<ImageView>(R.id.imageView)
             var textViewHeadLine = itemView.findViewById<TextView>(R.id.textViewHeadline)
+
         }
     }
 
